@@ -1,13 +1,15 @@
 import styles from "./Card.module.css";
 
-export const Card = ({ card, handleChoice }) => {
+export const Card = ({ card, handleChoice, flipped, disabled }) => {
   const handleClick = () => {
-    handleChoice(card);
+    if (!disabled) {
+      handleChoice(card);
+    }
   };
 
   return (
     <div className={styles.card}>
-      <div>
+      <div className={flipped ? styles.flipped : ""}>
         <img
           src={card.src}
           className={styles.cardFront}
